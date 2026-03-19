@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "app-list",
+    "slug": "app-list",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets.expo/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets.expo/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets.expo/android-icon-foreground.png",
+        "backgroundImage": "./assets.expo/android-icon-background.png",
+        "monochromeImage": "./assets.expo/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets.expo/favicon.png"
+    },
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}
