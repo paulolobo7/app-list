@@ -3,15 +3,17 @@ import React from "react";
 import { Text, View, Image, TextInput, TouchableOpacity, ActivityIndicator } from "react-native"
 import { style } from "./styles";
 import Logo from '../../assets/logo.png';
-import { MaterialIcons } from '@expo/vector-icons'
+import { MaterialIcons, Octicons } from '@expo/vector-icons'
 import { themes } from "../../global/themes";
 import { Input } from "../../components/input";
+import { Button } from "../../components/button";
 
 
 
 export default function Login() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [showPassword, setShowPassword] = React.useState(true);
   const [loading, setLoading] = React.useState(false);
 
   async function getLogin() {
@@ -35,6 +37,7 @@ export default function Login() {
     }
   }
   return (
+    <>
     <View style={style.container}>
       <View style={style.boxTop}>
 
@@ -45,52 +48,44 @@ export default function Login() {
         <Text style={style.text}>bem-vindo de volta!</Text>
 
       </View>
-      <Input />
+      
       <View style={style.boxMid}>
+
+        <Input
+          value={email}
+          onChangeText={setEmail}
+          title="EMAIL"
+          IconRight={MaterialIcons}
+          iconRightname="email"
+          
+        />
+        <Input
+          value={password}
+          onChangeText={setPassword}
+          title="SENHA"
+          IconRight={Octicons}
+          iconRightname={showPassword?"eye-closed":"eye"}
+          secureTextEntry={showPassword}
+          onIconRightPress={() => setShowPassword(!showPassword)}   
+          
+        />
         
       </View>  
 
-      <View style={style.boxBottom}>
-        <TouchableOpacity style={style.button} onPress={getLogin}>
-          {loading ?
-            <ActivityIndicator color={'#FFFF'} size={"small"} />
-            :
-            <Text style={style.textButton}>ENTRAR</Text>
-          }
-        </TouchableOpacity>
-      </View>
+      <Button
+        text="ENTRAR"
+        onPress={getLogin}
+        loading={loading}
+      />
+      
 
       <Text style={style.textBottom}>Não tem conta?
         <Text style={{ color: themes.colors.primary }}>Cadastre-se</Text>
       </Text>
     </View>
+    </>
   )
 }
 
 
 
-{/* <View style={style.boxInput}>
-              <TextInput placeholder="Digite seu email" 
-                         style={style.input} value={email} 
-                         onChangeText={setEmail}/>
-              
-              <MaterialIcons name="email" 
-                             size={24} 
-                             color={themes.colors.gray}/> 
-                             
-              
-              </View>
-              
-              <Text style={style.titleInput}>SENHA</Text> 
-              <View style={style.boxInput}>
-              <TextInput placeholder="Digite sua senha" 
-                         style={style.input} 
-                         value={password} 
-                         onChangeText={setPassword}/>
-
-              <MaterialIcons name="remove-red-eye" 
-                             size={24} 
-                             color={themes.colors.gray}/> 
-              </View>
-
-            </View>   */}
