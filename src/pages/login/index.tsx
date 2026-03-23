@@ -7,6 +7,8 @@ import { MaterialIcons, Octicons } from '@expo/vector-icons'
 import { themes } from "../../global/themes";
 import { Input } from "../../components/input";
 import { Button } from "../../components/button";
+import { router} from "expo-router";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
 
 
 
@@ -15,16 +17,22 @@ export default function Login() {
   const [password, setPassword] = React.useState('');
   const [showPassword, setShowPassword] = React.useState(true);
   const [loading, setLoading] = React.useState(false);
+  const navigation = useNavigation<NavigationProp<any>>();
 
   async function getLogin() {
     try {
       setLoading(true);
+
       if (!email || !password) {
         return alert('Preencha todos os campos')
       }
+
+      navigation.navigate('BottomRoutes');
+
       setTimeout(() => {
         if (email === 'lobo@gmail.com' && password === 'admin') {
           alert('Login realizado com sucesso!')
+          router.push('/work-list');
         } else {
           alert('Email ou senha incorretos!')
         }
@@ -34,6 +42,8 @@ export default function Login() {
 
     } catch (error) {
       console.log(error)
+    }finally {
+      setLoading(false);
     }
   }
   return (
