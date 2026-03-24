@@ -4,6 +4,7 @@ import { themes } from "../../global/themes";
 
 export const style = StyleSheet.create({ 
      boxInput:{
+            flex:1,
             width:350,
             height:50,
             borderWidth:1,

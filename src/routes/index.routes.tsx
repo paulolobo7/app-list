@@ -12,6 +12,7 @@ export default function Routes() {
             initialRouteName="Login"
             screenOptions={{
                 headerShown: false,
+                
             }}
         >
 

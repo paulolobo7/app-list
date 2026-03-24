@@ -13,8 +13,8 @@ import { useNavigation, NavigationProp } from "@react-navigation/native";
 
 
 export default function Login() {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = React.useState('a');
+  const [password, setPassword] = React.useState('a');
   const [showPassword, setShowPassword] = React.useState(true);
   const [loading, setLoading] = React.useState(false);
   const navigation = useNavigation<NavigationProp<any>>();
@@ -27,7 +27,7 @@ export default function Login() {
         return alert('Preencha todos os campos')
       }
 
-      navigation.navigate('BottomRoutes');
+      navigation.reset({routes: [{ name: 'BottomRoutes' }]});
 
       setTimeout(() => {
         if (email === 'lobo@gmail.com' && password === 'admin') {
