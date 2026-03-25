@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, TouchableOpacity, View } from "react-native"
 import { style } from "./styles";
 import { AntDesign, Entypo, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { themes } from "../../global/themes";
+import { AuthContextList, } from "../../context/authContext_list";
 
 
 export default({state, navigation})=> {
+ 
+  const {onOpen} = useContext<any>(AuthContextList );
 
   const goTo = (screenName:string) => {
     navigation.navigate(screenName)
@@ -29,7 +32,7 @@ export default({state, navigation})=> {
             </TouchableOpacity>
 
 
-            <TouchableOpacity style={style.tabItemButtom}>
+            <TouchableOpacity style={style.tabItemButtom} onPress={onOpen}>
 
                 <View style={{width:'100%', justifyContent:'flex-start',left:9, top:4}}>
                     <Entypo  
